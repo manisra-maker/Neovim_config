@@ -21,7 +21,11 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "/home/manish/Nodejs_notes/",
+        path = "/home/manish/Obsidian_JS_Notes",
+      },
+      {
+        name = "React_Couse",
+        path = "/home/manish/Obsidian_React_Course",
       },
       {
         name = "work",
