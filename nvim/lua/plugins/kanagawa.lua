@@ -1,37 +1,42 @@
 return {
-	"rebelot/kanagawa.nvim",
-	name = "kanagawa-dragon",
-	enabled = false,
-	priority = 1000, -- Load it early if needed
-	config = function()
-		require("kanagawa").setup({
-			transparent = false, -- Enable transparency
-			theme = "dragon", -- Select the dragon style
-			background = "dark", -- Optional: Set background to dark
-		})
-		vim.cmd.colorscheme("kanagawa-dragon") -- Apply the Kanagawa colorscheme
+  "rebelot/kanagawa.nvim",
+  name = "kanagawa-dragon",
+  enabled = true,
+  priority = 1000, -- Load it early
+  config = function()
+    require("kanagawa").setup({
+      transparent = true,   -- Keep main background transparent
+      background = "dark",  -- Dark background style
+    })
 
-		vim.o.number = true -- Enable line numbers
-		vim.o.relativenumber = true -- Enable relative line numbers
+    vim.cmd.colorscheme("kanagawa-dragon") -- Apply colorscheme
 
-		-- Make necessary highlight groups transparent
-		vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
-		vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
-		vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
-		vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
-		vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+    -- Line numbers & relative numbers
+    vim.o.number = true
+    vim.o.relativenumber = true
 
-		-- Make the status line and command line transparent
-		vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" }) -- Current window status line
-		vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" }) -- Non-current window status line
-		vim.api.nvim_set_hl(0, "CmdLine", { bg = "NONE" }) -- Command-line area
-		vim.api.nvim_set_hl(0, "CmdLinePopup", { bg = "NONE" }) -- Popup for command-line
-		vim.api.nvim_set_hl(0, "Pmenu", { bg = "NONE" }) -- Popup menu background
-		vim.api.nvim_set_hl(0, "PmenuSel", { bg = "NONE" }) -- Selected popup menu item background
+    -- Transparent main editing area & UI columns
+    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
 
-		-- Optional: Customize other UI elements for better transparency
-		vim.api.nvim_set_hl(0, "TabLine", { bg = "NONE" }) -- Transparent tabline
-		vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE" }) -- Transparent tabline fill
-		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" }) -- Transparent floating window borders
-	end,
+    -- Keep statusline transparent
+    vim.api.nvim_set_hl(0, "StatusLine", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "NONE" })
+
+    -- POPUPS & MENUS: solid background for visibility
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1F1F28" }) -- floating windows
+    vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1F1F28", fg = "#A3A3A3" }) -- float borders
+    vim.api.nvim_set_hl(0, "Pmenu", { bg = "#1F1F28", fg = "#DCD7BA" }) -- popup menu
+    vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#2A2A37", fg = "#C8C093" }) -- selected item
+    vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#1F1F28" })
+    vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#2A2A37" })
+
+    -- Optional: Transparent tabline
+    vim.api.nvim_set_hl(0, "TabLine", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE" })
+  end,
 }
+
